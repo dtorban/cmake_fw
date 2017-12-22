@@ -1,5 +1,5 @@
 if(NOT external_dir)
-	set(external_dir ${CMAKE_SOURCE_DIR}/external)
+	set(external_dir ${CMAKE_SOURCE_DIR}/cmake/external)
 endif()
 
 function(add_external DepName)

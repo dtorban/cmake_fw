@@ -1,4 +1,4 @@
-include(${CMAKE_SOURCE_DIR}/external/external.cmake)
+include(${CMAKE_SOURCE_DIR}/cmake/external/external.cmake)
 
 source_group("Header Files" FILES ${HEADERFILES})
 source_group("Source Files" FILES ${SOURCEFILES})

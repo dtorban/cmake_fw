@@ -9,3 +9,5 @@ execute_process(
 endif()
 
 include(${PROJECT_SOURCE_DIR}/cmake/project/MainProject.cmake)
+
+add_subdirectory(app)
