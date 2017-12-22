@@ -8,4 +8,4 @@ execute_process(
 )
 endif()
 
-include(${PROJECT_SOURCE_DIR}/b/cmake/MainProject.cmake)
+include(${PROJECT_SOURCE_DIR}/cmake/project/MainProject.cmake)
