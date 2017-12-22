@@ -1,6 +1,6 @@
 project (ExampleApp)
 
-include(${CMAKE_SOURCE_DIR}/cmake/project/project.cmake)
+include(${CMAKE_FRAMEWORK_DIR}/project/project.cmake)
 
 # --------------------- Source -----------------------
 

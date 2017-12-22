@@ -8,6 +8,7 @@ execute_process(
 )
 endif()
 
-include(${PROJECT_SOURCE_DIR}/cmake/project/MainProject.cmake)
+set(CMAKE_FRAMEWORK_DIR ${CMAKE_SOURCE_DIR}/cmake)
+include(${CMAKE_FRAMEWORK_DIR}/project/MainProject.cmake)
 
 add_subdirectory(app)
