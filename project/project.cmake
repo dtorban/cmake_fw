@@ -1,8 +1,8 @@
 if(NOT CMAKE_FRAMEWORK_DIR)
-  set(CMAKE_FRAMEWORK_DIR ${CMAKE_SOURCE_DIR}/cmake)
+  set(CMAKE_FRAMEWORK_DIR ${CMAKE_SOURCE_DIR}/cmake/framework)
 endif()
 
-include(${CMAKE_SOURCE_DIR}/cmake/external/external.cmake)
+include(${CMAKE_FRAMEWORK_DIR}/external/external.cmake)
 
 source_group("Header Files" FILES ${HEADERFILES})
 source_group("Source Files" FILES ${SOURCEFILES})
