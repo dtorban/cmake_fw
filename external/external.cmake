@@ -9,6 +9,8 @@ function(add_external DepName)
 	if (NOT dep_current_param)
 		if (${var} MATCHES "HEADER_ONLY")
 			set(${DepName}_${var} True)
+		elseif (${var} MATCHES "CONFIGURE_MAKE")
+			set(${DepName}_${var} True)
 		else()
 			set(dep_current_param ${var})
 		endif()
@@ -101,6 +103,23 @@ function(add_external DepName)
 						BUILD_COMMAND ""
 						CONFIGURE_COMMAND ""
 						INSTALL_COMMAND ""
+				)
+			elseif(${DepName}_CONFIGURE_MAKE)
+				ExternalProject_add(${DepName}
+						PREFIX ${${DepName}_PREFIX}
+						URL "${${DepName}_URL}"
+						INSTALL_DIR ${${DepName}_INSTALL_DIR}
+						CMAKE_ARGS ${${DepName}_CMAKE_ARGS}
+						UPDATE_COMMAND ""
+						DOWNLOAD_DIR ${${DepName}_checkout_Dir}
+						SOURCE_DIR ${${DepName}_checkout_Dir}
+						TMP_DIR ${${DepName}_tmp_dir}
+						STAMP_DIR ${${DepName}_stamp_dir}
+						BINARY_DIR ${${DepName}_build_dir}
+						PATCH_COMMAND "${${DepName}_PATCH_COMMAND}"
+						BUILD_COMMAND make
+						CONFIGURE_COMMAND <SOURCE_DIR>/configure --enable-shared=no --prefix=${${DepName}_INSTALL_DIR}
+						INSTALL_COMMAND make install
 				)
 			else()
 				ExternalProject_add(${DepName}
