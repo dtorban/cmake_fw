@@ -29,6 +29,8 @@
 #include <GL/gl.h>
 #endif
 
+#include <iostream>
+
 inline void initializeGLExtentions() {
 #if defined(USE_GLEW)
 	glewExperimental = GL_TRUE;
