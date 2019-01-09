@@ -27,7 +27,9 @@ function(add_external DepName)
 	set(${DepName}_tmp_dir ${${DepName}_build_dir}/tmp)
 
 	set(${DepName}_PREFIX "${${DepName}_checkout_Dir}")
-	set(${DepName}_INSTALL_DIR "${${DepName}_build_dir}/../install")
+        if (NOT ${DepName}_INSTALL_DIR)
+	  set(${DepName}_INSTALL_DIR "${${DepName}_build_dir}/../install")
+        endif()
 
 	#message("Args: " ${${${DepName}_CMAKE_ARGS}})
 
