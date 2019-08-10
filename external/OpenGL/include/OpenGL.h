@@ -13,7 +13,12 @@
 //#if defined(LIBRARY_SHARED) && !defined(GLAD_GLAPI_EXPORT)
 //#define GLAD_GLAPI_EXPORT
 //#endif
+#ifndef __gl_h_
 #include <glad/glad.h>
+#else
+typedef void* (* GLADloadproc)(const char *name);
+GLAPI int gladLoadGLLoader(GLADloadproc);
+#endif
 #endif
 
 #if defined(USE_GLEW)
@@ -51,8 +56,7 @@ inline void initializeGLExtentions() {
 #if defined(USE_GLAD)
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
         throw std::runtime_error("Could not initialize GLAD!");
-        glGetError(); // pull and ignore unhandled errors like GL_INVALID_ENUM
-    }
+    glGetError(); // pull and ignore unhandled errors like GL_INVALID_ENUM
 #endif
 }
 
