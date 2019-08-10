@@ -9,6 +9,13 @@
 #ifndef OPENGLHEADERS_H_
 #define OPENGLHEADERS_H_
 
+#if defined(USE_GLAD)
+//#if defined(LIBRARY_SHARED) && !defined(GLAD_GLAPI_EXPORT)
+//#define GLAD_GLAPI_EXPORT
+//#endif
+#include <glad/glad.h>
+#endif
+
 #if defined(USE_GLEW)
 #include "GL/glew.h"
 #ifdef _WIN32
@@ -23,6 +30,7 @@
 #include <windows.h>
 #include <GL/gl.h>
 #elif defined(__APPLE__)
+#define GLFW_INCLUDE_GLCOREARB
 #include <OpenGL/OpenGL.h>
 #else
 #define GL_GLEXT_PROTOTYPES
@@ -38,6 +46,13 @@ inline void initializeGLExtentions() {
 	if (GLEW_OK != err) {
 		std::cout << "Error initializing GLEW." << std::endl;
 	}
+#endif
+
+#if defined(USE_GLAD)
+    if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
+        throw std::runtime_error("Could not initialize GLAD!");
+        glGetError(); // pull and ignore unhandled errors like GL_INVALID_ENUM
+    }
 #endif
 }
 
