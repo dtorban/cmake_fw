@@ -56,3 +56,16 @@ macro (useGLEW)
 	)
 endmacro()
 
+
+# GLAD
+macro (useGLAD)
+	set(DEP_INCLUDES ${DEP_INCLUDES}
+	  ${external_dir}/OpenGL/glad/include
+	)
+
+	add_definitions(-DUSE_GLAD)
+
+	set (DEP_SOURCEFILES ${DEP_SOURCEFILES} 
+		${external_dir}/OpenGL/glad/src/glad.c
+	)
+endmacro()
