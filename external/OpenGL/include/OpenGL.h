@@ -10,9 +10,9 @@
 #define OPENGLHEADERS_H_
 
 #if defined(USE_GLAD)
-//#if defined(LIBRARY_SHARED) && !defined(GLAD_GLAPI_EXPORT)
-//#define GLAD_GLAPI_EXPORT
-//#endif
+#if defined(LIBRARY_SHARED) && !defined(GLAD_GLAPI_EXPORT)
+#define GLAD_GLAPI_EXPORT
+#endif
 #ifndef __gl_h_
 #include <glad/glad.h>
 #else
@@ -43,6 +43,10 @@ GLAPI int gladLoadGLLoader(GLADloadproc);
 #endif
 
 #include <iostream>
+
+#if defined(USE_GLAD)
+#include <GLFW/glfw3.h>
+#endif
 
 inline void initializeGLExtentions() {
 #if defined(USE_GLEW)
