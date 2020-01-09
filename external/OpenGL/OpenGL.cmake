@@ -56,6 +56,26 @@ macro (useGLEW)
 	)
 endmacro()
 
+# GLEW
+macro (useGLEW_NO_IMPL)
+	
+	add_external(GLEW 
+		URL https://sourceforge.net/projects/glew/files/glew/2.1.0/glew-2.1.0.zip
+		HEADER_ONLY
+	)
+
+	set(DEP_INCLUDES ${DEP_INCLUDES}
+	  ${external_dir}/GLEW/src/include
+	  ${external_dir}/GLEW/src/src
+	)
+
+	add_definitions(-DUSE_GLEW)
+
+	#set (DEP_SOURCEFILES ${DEP_SOURCEFILES} 
+	#	${external_dir}/OpenGL/glew/glewProxy.cpp
+	#)
+endmacro()
+
 
 # GLAD
 macro (useGLAD)
