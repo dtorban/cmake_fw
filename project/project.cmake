@@ -7,6 +7,23 @@ include(${CMAKE_FRAMEWORK_DIR}/external/external.cmake)
 source_group("Header Files" FILES ${HEADERFILES})
 source_group("Source Files" FILES ${SOURCEFILES})
 
+macro (addStandardInfo scope)
+	if(DEP_INCLUDES)
+		include_directories(${DEP_INCLUDES})
+	endif()
+
+	if(DEP_LINK_DIRS)
+		link_directories(${DEP_LINK_DIRS})
+	endif()
+
+	if(PROJECT_DEPS)
+		add_dependencies(${PROJECT_NAME} ${PROJECT_DEPS})
+	endif()
+
+	target_link_libraries(${PROJECT_NAME} ${scope} ${DEP_LIBS} ${ALL_LIBS})
+endmacro()
+
+
 macro (addStandardExecutable)
 	if(DEP_INCLUDES)
 		include_directories(${DEP_INCLUDES})
