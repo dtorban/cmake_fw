@@ -120,7 +120,7 @@ function(add_external DepName)
 						BINARY_DIR ${${DepName}_build_dir}
 						PATCH_COMMAND "${${DepName}_PATCH_COMMAND}"
 						BUILD_COMMAND make
-						CONFIGURE_COMMAND <SOURCE_DIR>/configure --enable-shared=no --prefix=${${DepName}_INSTALL_DIR}
+						CONFIGURE_COMMAND <SOURCE_DIR>/configure --enable-shared=no --enable-pic --prefix=${${DepName}_INSTALL_DIR}
 						INSTALL_COMMAND make install
 				)
 			else()
