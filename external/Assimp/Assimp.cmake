@@ -5,6 +5,7 @@ macro (useAssimp)
 		GIT_REPOSITORY https://github.com/assimp/assimp.git
 		CMAKE_ARGS AssimpArgs
 		LIB_NAME assimp
+		DEBUG_POSTFIX d
 	)
 
 	find_package(ZLIB)

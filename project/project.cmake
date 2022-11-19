@@ -72,6 +72,8 @@ macro (addStandardLibrary)
 		     LIBRARY DESTINATION lib
 		     ARCHIVE DESTINATION lib
 		     RUNTIME DESTINATION bin)
+
+	install(DIRECTORY ${PROJECT_SOURCE_DIR}/  DESTINATION "include/${PROJECT_NAME}" FILES_MATCHING PATTERN "*.h")
 endmacro()
 
 macro (addSharedLibrary)
@@ -97,4 +99,6 @@ macro (addSharedLibrary)
 		     LIBRARY DESTINATION lib
 		     ARCHIVE DESTINATION lib
 		     RUNTIME DESTINATION bin)
+
+	install(DIRECTORY ${PROJECT_SOURCE_DIR}/  DESTINATION "include/${PROJECT_NAME}" FILES_MATCHING PATTERN "*.h")
 endmacro()
